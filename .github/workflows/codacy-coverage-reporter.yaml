@@ -22,6 +22,8 @@ jobs:
           
       - name: Test with unittest and coverage
         run: |
+          pwd
+          ls
           coverage run -m unittest
           coverage xml
           
