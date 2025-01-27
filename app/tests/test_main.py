@@ -1,7 +1,7 @@
 # tests/test_example.py
 
 import unittest
-from app import add, subtract
+from app.main import add, subtract
 
 class TestExample(unittest.TestCase):
     def test_add(self):
