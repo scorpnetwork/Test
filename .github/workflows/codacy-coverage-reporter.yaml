@@ -25,9 +25,3 @@ jobs:
           ls
           coverage run -m unittest discover -s app/tests -p 'test_*.py'
           coverage xml
-          
-      - name: Run codacy-coverage-reporter
-        uses: codacy/codacy-coverage-reporter-action@v1.3.0
-        with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: coverage.xml
