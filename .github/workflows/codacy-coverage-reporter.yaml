@@ -22,6 +22,6 @@ jobs:
           
       - name: Test with unittest and coverage
         run: |
-          ls
           coverage run -m unittest discover -s app/tests -p 'test_*.py'
+          coverage report
           coverage xml
