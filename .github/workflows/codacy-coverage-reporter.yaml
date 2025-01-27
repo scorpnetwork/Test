@@ -23,7 +23,7 @@ jobs:
       - name: Test with unittest and coverage
         run: |
           coverage run -m unittest discover -s app/tests -p 'test_*.py'
-          coverage XML
+          coverage xml
           
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
