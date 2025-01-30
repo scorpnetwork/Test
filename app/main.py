@@ -1,9 +1,8 @@
-import asyncio
 from passlib.context import CryptContext
 from fastapi import Depends, FastAPI, HTTPException, status
 from pydantic import BaseModel
 from sqlmodel import SQLModel, Field, Session, create_engine, select
-from typing import Optional, Annotated
+from typing import Annotated
 from sqlalchemy.exc import IntegrityError
 
 app = FastAPI()
@@ -39,7 +38,8 @@ class User(UserBase, table=True):
     hashed_password: str
 
 class UserPublic(UserBase):
-    # This is the model that will be rturned to users, as of now all we need to return is the email, which is similar to the UserBase model anyways, in the future we can return more data
+    # This is the model that will be rturned to users, as of now all we need to return is the email, which is similar to the UserBase model anyways, 
+    # in the future we can return more data
     pass
 
 class UserCreate(UserBase):
@@ -66,6 +66,7 @@ class LoginResponse(BaseModel):
 def jwt():
     return 0
 
+
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def hash_password(plain_password: str) -> str:
@@ -87,7 +88,7 @@ async def login(user: UserLogin, session: SessionDep): # async def with non-bloc
     - **email**: The email of the user from the HTML form.
     - **plain_password**: The plain password from the HTML form.
     """
-    
+
     validated_user = UserLogin.model_validate(user)
 
     stmt = select(User).where(User.email == validated_user.email)
