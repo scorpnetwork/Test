@@ -1,4 +1,4 @@
-from app.api.users.schemas import UserBase
+from .schemas import UserBase
 from sqlmodel import SQLModel, Field
 
 
